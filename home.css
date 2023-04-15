@@ -1,0 +1,227 @@
+.header{
+    padding:2rem;
+    text-align: center;
+    background: url(../images/header-bg.jpg) no-repeat bottom;
+    background-size: cover;
+    padding-bottom: 8rem;
+    position: relative;
+}
+.header::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #012b2a91;
+    z-index: 1;
+}
+.header .main-title{
+    color: var(--l-color);
+    font-size: 3rem;
+    position: relative;
+    z-index: 99;
+}
+
+@media(max-width:767px){
+    .header{
+        padding-bottom: 6rem;
+    }
+    /* .header .main-title{
+        font-size: 2rem;
+    } */
+
+}
+
+.header .dark-switch{
+    position: absolute;
+    top:10px;
+    right: 30px;
+    z-index: 99;
+    font-size: 14px;
+    line-height: 20px;
+    width: 60px;
+    height: 30px;
+    border: 2px solid var(--l-color);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    cursor: pointer;
+}
+
+.header .dark-switch span{
+   width:25px;
+   height: 25px;
+   border-radius: 50%;
+   -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+   -ms-border-radius: 50%;
+   -o-border-radius: 50%;
+   display: inline-block;
+   transform:translateX(10px) ;
+   -webkit-transform:translateX(10px) ;
+   -moz-transform:translateX(10px) ;
+   -ms-transform:translateX(10px) ;
+   -o-transform:translateX(10px) ;
+   transition: all .5s;
+   -webkit-transition: all .5s;
+   -moz-transition: all .5s;
+   -ms-transition: all .5s;
+   -o-transition: all .5s;
+}
+.header .dark-switch .dark-switch-move{
+    transform: translateX(-10px);
+    -webkit-transform: translateX(-10px);
+    -moz-transform: translateX(-10px);
+    -ms-transform: translateX(-10px);
+    -o-transform: translateX(-10px);
+}
+
+/* start main  */
+
+.main{
+    margin: auto;
+    width: 700px; 
+    /* border: 2px solid; */
+    max-width: 90%;
+    text-align: center;
+    
+}
+.main-container{
+    position: relative;
+    transform: translateY(-80px);
+    -webkit-transform: translateY(-80px);
+    -moz-transform: translateY(-80px);
+    -ms-transform: translateY(-80px);
+    -o-transform: translateY(-80px);
+    
+    z-index: 99;
+}
+
+
+/* satart surah */
+
+.surahs{
+    padding: 2rem 1rem;
+    font-size: 1.3rem;
+    max-height: 100%;
+    overflow-y: auto;
+    counter-reset: count;
+    background-color: #cfd2ac;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.surah {
+    width: calc(100% - 60px);
+    margin-right: auto;
+    margin-bottom: 1rem;
+}
+.surah .surah-header{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--l-color);
+    padding: 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+     position: relative;
+    
+   
+}
+.surah .surah-header::before{
+    counter-increment: count;
+    content: counter(count);
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    top: 50%;
+    right:-70px ;
+    background-color: var(--s-color);
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    line-height: 50px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    color: var(--l-color);
+    border: 1px solid var(--l-color);
+    
+}
+.surah .surah-header::after{
+    content: '';
+    border: 5px solid;
+    border-color: transparent transparent var(--s-color) transparent;
+    transform:translateY(-50%) rotate(90deg) ;
+    -webkit-transform:translateY(-50%) rotate(90deg) ;
+    -moz-transform:translateY(-50%) rotate(90deg) ;
+    -ms-transform:translateY(-50%) rotate(90deg) ;
+    -o-transform:translateY(-50%) rotate(90deg) ;
+    position: absolute;
+    top: 50%;
+    left: 100%;
+}
+.surah .surah-footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--d-color);
+    color: var(--l-color);
+    /*padding: 1rem;
+    */border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 0;
+    overflow: hidden;
+    transition: all .5s;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+
+.surah:hover .surah-footer{
+    height: fit-content;
+    padding: 1rem;
+}
+.surah .surah-footer div{
+    transition: all .5s;
+    padding:0 1.5rem 1rem;
+    line-height: 1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    cursor: pointer;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    -ms-transition: all .5s;
+    -o-transition: all .5s;
+}
+.surah-footer a{
+    color: var(--l-color);
+    text-decoration: none;
+}
+.surah .surah-footer div:hover{
+    background-color: #04a7a434;
+}
+
+footer{
+    font-size: 1.7rem;
+    background-color: #cfd2ac;
+    color: var(--d-color);
+    padding: 1rem;
+    text-align: center;
+}
+
+footer a{
+    color: var(--m-color);
+    font-size: 2rem;
+    display: inline-block;
+    height: 30px;
+    line-height: 30px;
+}
