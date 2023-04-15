@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quran site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body lang="ar" dir="rtl">
+    <div class="loader" id="loader"><div class="loader-spin"></div></div>
+
+    <div class="hero-container">
+   <div class="header">
+    <h1 class="main-title">الآن هُوَ وَقْتُ الْقُرْءَانِ</h1>
+    <div class="dark-switch"><span>🌙</span></div>
+   </div>
+
+   <div class="main">
+    <div class="main-container">
+    <div class="quran-player" id="quran-player">
+        <div class="audio" >
+            <audio src="" id="quran-audio" controls></audio>
+        </div>
+        <div class="controls-container">
+        <div class="audio-controls">
+            <div class="forward" id="forward-btn"><ion-icon  name="play-back-circle-outline"></ion-icon></div>
+            <div  class="play-pause paused" id="play-pause-btn"><ion-icon name="play-circle-outline"></ion-icon></div>
+            <div class="back" id="back-btn"><ion-icon name="play-forward-circle-outline"></ion-icon></div>
+        </div>
+        <!-- <div class="autoplay" id="autoPlay"><ion-icon name="return-down-forward-outline"></ion-icon></div> -->
+    </div>
+    </div>
+
+     <div class="surahs" id="surahs">
+      <!--  
+        <div class="surah">
+            <div class="surah-header">
+                <div class="surah-name">سورة الفاتحه</div>
+                <div class="surah-place">مدينه</div>
+                <div class="surah-ayat-num">عدد اياتها 20</div>
+            </div>
+            <div class="surah-footer">
+                <div class="read-surah">
+                    قراءه
+                </div>
+                <div class="listen-surah">
+                    استماع
+                </div>
+            </div>
+        </div>
+    -->
+   </div>
+</div>
+</div>
+
+
+<script src="js/darkmode.js"></script>
+<script src="js/home.js"></script>
+
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
