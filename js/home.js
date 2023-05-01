@@ -17,7 +17,7 @@ function getData() {
         <div class="surah-header">
             <div class="surah-name">${s.asma.ar.long}</div>
             <div class="surah-place">${s.type.ar}</div>
-            <div class="surah-ayat-num">عدد اياتها ${s.ayahCount}</div>
+            <div class="surah-ayat-num"> اياتها ${s.ayahCount}</div>
         </div>
         <div class="surah-footer">
             <div class="read-surah">
@@ -143,4 +143,15 @@ function listenSurah(){
     let loader = document.getElementById("loader");
   
     loader.style.display="none"
+  })
+
+  window.addEventListener("scroll",()=>{
+    let quranPlayer = document.getElementById("quran-player");
+  
+    if(scrollY >= 300){
+      console.log(scrollY)
+      quranPlayer.classList.add("quran-player-scrolled");
+    }else{
+      quranPlayer.classList.remove("quran-player-scrolled")
+    }
   })

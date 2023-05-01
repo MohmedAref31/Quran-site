@@ -8,12 +8,60 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/surahread.css">
 </head>
 <body lang="ar" dir="rtl">
-<div class="loader" id="loader"><div class="loader-spin"></div></div>
+<!-- <div class="loader" id="loader"><div class="loader-spin"></div></div> -->
     <div class="hero-container">
+
+
+        <div class="settings settings-close" id="settings">
+            <div class="toggle-close" id="toggle-close">
+                <ion-icon name="settings-outline"></ion-icon>
+            </div>
+            
+            <div class="readers">
+                <label for="select-reader">اختر القارئ</label>
+                <select id="select-reader">
+                    <option value="alafasy" >مشارى راشد العفاسى</option>
+                    <option value="ahmedajamy" >أحمد العجمى</option>
+                    <option value="husarymujawwad" >الحصري</option>
+                    <option value="minshawi" >محمد صديق المنشاوى</option>
+                    <option value="muhammadayyoub" >محمد ايوب</option>
+                    <option value="muhammadjibreel" >محمد جبريل</option>
+                </select>
+            </div>
+
+            <div class="background-container">
+            <p>لون الخلفية</p>
+            <div class="colors">
+                <div class="black" style="background-color: black;" value="black" data-color="white"></div>
+                <div class="white" style="background-color: white;" value="white" data-color="black"></div>
+                <div class="wheat" style="background-color: wheat;" value="wheat" data-color="black"></div>
+            </div>
+        </div>
+            <div class="font-size-container">
+            <p>حجم الخط</p>
+            <div class="font-size">
+                <div class="increase" id="increase-size">+</div>
+
+                <div class="font-num" id="font-size-num">1</div>
+                <div class="decrease" id="decrease-size">-</div>
+            </div>
+        </div>
+
+        <div class="goto-ayah">
+            <input type="number"  id="ayah-num" min="1" max="" placeholder="أذهب الى اية بين 1~300">
+            <button id="goto-ayah-btn">
+                <ion-icon name="arrow-back-outline"></ion-icon>
+            </button>
+        </div>
+
+
+        </div>
+
+
         <div class="quran-player " id="quran-player">
             <div class="audio" >
                 <audio src="" id="quran-audio" controls></audio>
@@ -39,6 +87,7 @@
 
 
     <script src="js/readsurah.js"></script>
+    <script src="js/settings.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 

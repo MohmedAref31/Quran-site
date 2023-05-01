@@ -17,7 +17,7 @@ if (surahIndex != null) {
 window.addEventListener("load",()=>{
   let loader = document.getElementById("loader");
 
-  loader.style.display="none"
+  // loader.style.display="none"
 })
 
 
@@ -51,7 +51,9 @@ window.addEventListener("load",()=>{
        ayahindex=index;
        console.log("aya"+ayahindex);
        if(ayahindex!=null){  
-        quranPlayer.setAttribute("src",ayahs[ayahindex].audio.alafasy)
+        let readerName =ayahs[ayahindex].audio[JSON.parse(localStorage.getItem("settings"))["reader"]];
+        console.log(readerName)
+        quranPlayer.setAttribute("src",readerName)
         quranPlayer.play()
         ayahHieghLight(ayahindex);
        isPlay=true;
@@ -165,6 +167,24 @@ window.addEventListener("load",()=>{
      
     }nextPrevAyah()
 
+    function goToAyah(){
+      let ayahNum = document.getElementById("ayah-num");
+      let gotoAyahBtn = document.getElementById("goto-ayah-btn");
+
+      ayahNum.setAttribute("placeholder",`أذهب الى اية بين 1~${ayahs.length}`)
+      ayahNum.setAttribute("max",ayahs.length)
+
+      gotoAyahBtn.onclick=function(){
+        if(ayahNum.value != "" && ayahNum.value <= ayahs.length){
+          window.scrollTo(0,ayahstext[ayahNum.value - 1].offsetTop);
+          console.log(ayahstext[ayahNum.value - 1].offsetTop)
+          ayahindex=ayahNum.value - 1;
+          playAyah(ayahindex)
+        }
+      }
+
+    }
+    goToAyah()
 
   } //request listener
 

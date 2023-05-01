@@ -13,7 +13,7 @@ body{
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
     line-height: 2;
-    padding: 0 1rem;
+    padding:  1rem;
 }
 
 .quran-container{
@@ -22,6 +22,15 @@ body{
     margin: auto;
     font-size: 1.5rem;
     padding: 2rem 0;
+    background-color: black;
+    line-height: 2;
+    margin-top: 1rem;
+    padding:  1rem .5rem;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
 }
 
 .quran-container span:hover{
@@ -33,9 +42,16 @@ body{
 }
 
 .quran-player-scrolled{
-    position: sticky;
+    position: fixed;
     top: 0;
-    
+    width: 100%;
+    padding: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
 }
 
 .quran-player-scrolled .audio{
