@@ -1,0 +1,43 @@
+body{
+    color: var(--l-color);
+}
+.hero-container{
+    text-align: center;
+    padding: 10px;
+}
+.quran-player{
+    position: static;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    line-height: 2;
+    padding: 0 1rem;
+}
+
+.quran-container{
+    width: 600px;
+    max-width: 95%;
+    margin: auto;
+    font-size: 1.5rem;
+    padding: 2rem 0;
+}
+
+.quran-container span:hover{
+    text-decoration: underline;
+}
+
+.quran-container span.active{
+    background-color: var(--d-color);
+}
+
+.quran-player-scrolled{
+    position: sticky;
+    top: 0;
+    
+}
+
+.quran-player-scrolled .audio{
+    display: none;
+}
