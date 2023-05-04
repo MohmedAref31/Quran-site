@@ -176,7 +176,7 @@ window.addEventListener("load",()=>{
 
       gotoAyahBtn.onclick=function(){
         if(ayahNum.value != "" && ayahNum.value <= ayahs.length){
-          window.scrollTo(0,ayahstext[ayahNum.value - 1].offsetTop);
+          window.scrollTo(0,ayahstext[ayahNum.value - 1].offsetTop - 300);
           console.log(ayahstext[ayahNum.value - 1].offsetTop)
           ayahindex=ayahNum.value - 1;
           playAyah(ayahindex)

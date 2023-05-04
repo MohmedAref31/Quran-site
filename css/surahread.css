@@ -39,6 +39,7 @@ body{
 
 .quran-container span.active{
     background-color: var(--d-color);
+    color: var(--l-color);
 }
 
 .quran-player-scrolled{
