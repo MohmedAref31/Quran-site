@@ -1,7 +1,7 @@
 .header{
     padding:2rem;
     text-align: center;
-    background: url(../images/header-bg.jpg) no-repeat bottom;
+    /* background: url(../images/header-bg.jpg) no-repeat top; */
     background-size: cover;
     padding-bottom: 8rem;
     position: relative;
@@ -13,11 +13,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: #012b2a91;
+    /* background-color: #b66c2b6e; */
     z-index: 1;
 }
 .header .main-title{
-    color: var(--l-color);
+    color: var(--s-color);
     font-size: 3rem;
     position: relative;
     z-index: 99;
@@ -109,7 +109,7 @@
     max-height: 100%;
     overflow-y: auto;
     counter-reset: count;
-    background-color: #cfd2ac;
+    background-color: var(--m-color);
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
 }
@@ -140,7 +140,7 @@
     line-height: 60px;
     top: 50%;
     right:-70px ;
-    background-color: var(--s-color);
+    background-color: var(--l-color);
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -152,7 +152,7 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
-    color: var(--l-color);
+    color: var(--s-color);
     border: 1px solid var(--l-color);
     
 }
@@ -172,7 +172,7 @@
 .surah .surah-footer{
     display: flex;
     justify-content: space-around;
-    background-color: var(--d-color);
+    background-color: var(--s-color);
     color: var(--l-color);
     /*padding: 1rem;
     */border-bottom-left-radius: 10px;
@@ -212,21 +212,75 @@
     text-decoration: none;
 }
 .surah .surah-footer div:hover{
-    background-color: #04a7a434;
+    background-color: var(--m-color);
+    color: var(--s-color);
+}
+.surah .surah-footer div:hover a{
+   
+    color: var(--s-color);
 }
 
 footer{
     font-size: 1.7rem;
-    background-color: #cfd2ac;
+    background-color: var(--m-color);
     color: var(--d-color);
     padding: 1rem;
     text-align: center;
 }
 
 footer a{
-    color: var(--m-color);
+    color: var(--s-color);
     font-size: 2rem;
     display: inline-block;
     height: 30px;
     line-height: 30px;
+}
+
+.settings .readers{
+    background-color: var(--s-color);
+    color: var(--m-color);
+}
+.settings .readers #reader-search{
+    width: 80%;
+    padding: .5rem;
+    border: none;
+    outline: none;
+    background-color: var(--m-color);
+    font-size: 1rem;
+    color: var(--s-color);
+}
+#reader-search::placeholder{
+    color: var(--s-color);
+}
+.settings .readers ul{
+    font-size: 1rem;
+    max-height: 250px;
+    background-color: var(--m-color);
+    color: var(--s-color);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    /* display: table; */
+}
+
+.settings .readers ul li{
+    border: 1px solid var(--l-color);
+    padding: 2px;
+    cursor: pointer;
+    /* display: none; */
+}
+.settings .readers ul li:last-child{
+  background-color: red;
+  
+}
+
+.settings .readers ul li:hover{
+    background-color: var(--s-color);
+    color: var(--m-color);
+}
+
+#reader-name-holder{
+    font-size: 1.5rem;
+    margin: .5rem auto -.5rem;
+    color: var(--l-color);
 }

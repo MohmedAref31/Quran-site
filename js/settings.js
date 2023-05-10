@@ -7,37 +7,39 @@ let fontIncrease=document.getElementById("increase-size")
 let fontDecrease=document.getElementById("decrease-size")
 let quranContainerN=document.getElementById("quran-container");
 let showReaderName= document.getElementById("show-reader-name");
+let settings={};
 
-console.log(quranBackground)
+console.log(localStorage.settings)
 
 toggleClose.onclick=function(){
     settingsFram.classList.toggle("settings-closed")
 }
+settingsFram.onblur=function(){
+    settingsFram.classList.add("settings-closed")
+}
+
 
 if(localStorage.settings!=null){
-    settings=JSON.parse(localStorage.getItem("settings"));
+settings=JSON.parse(localStorage.getItem("settings"));
+
 }else{
-    let settings = {
+     settings = {
     reader:"alafasy",
     readerAr:"مشاري راشد العفاسى",
     quranBackground:"#fff",
     fontSize:1.5,
     fontColor:"white",
 }
-
 }
 
 
 
 
-reader.onchange=function(){
-    console.log(settings.reader)
-    settings.reader=reader.value;
-    console.log(settings.reader)
-    
-    localStorage.setItem("settings",JSON.stringify(settings));
-    // console.log(JSON.parse(localStorage.getItem("settings")))
-}
+// reader.oninput=function(){
+//     applySets()
+   
+//     // console.log(JSON.parse(localStorage.getItem("settings")))
+// }
 
 quranBackground.forEach(e=>{
     e.onclick=function(){
@@ -83,7 +85,7 @@ function applySets(){
     quranContainerN.style.background = sets.quranBackground;
     quranContainerN.style.color = sets.color;
     quranContainerN.style.fontSize = +(sets.fontSize) + "rem";
-    showReaderName.innerHTML = "القارئ"+sets.reader;
+    showReaderName.innerHTML = "القارئ "+sets.readerAr;
 
 }
 applySets()

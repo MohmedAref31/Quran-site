@@ -2,15 +2,18 @@
 
 
 let surahIndex = +localStorage.getItem("surahReadLink") + 1;
+let surahInfo=JSON.parse(localStorage.getItem("surahInfo"));
 let quranPlayer=document.getElementById("quran-audio");
 let backBtn = document.getElementById("back-btn")
 let playBtn = document.getElementById("play-pause-btn")
 let forwardBtn = document.getElementById("forward-btn")
+let readerAr=document.querySelectorAll("#select-reader option");
+////console.log(readerAr)
 let isPlay = false;
 let ayahindex=0;
-console.log(surahIndex);
+//console.log(surahIndex);
 let quranContainer = document.getElementById("quran-container");
-console.log(quranContainer);
+//console.log(quranContainer);
 if (surahIndex != null) {
   function reqListener() {
       
@@ -20,20 +23,30 @@ window.addEventListener("load",()=>{
   // loader.style.display="none"
 })
 
+  quranPlayer.onload=function(){
+    console.log("loaded")
+  }
 
     let ayahs = JSON.parse(req.responseText);
-    // console.log(ayahs.length);
+    //console.log(ayahs);
+    quranContainer.innerHTML+=`<div class="surah-name">
+    <div class="surah-name-image">
+    <img src="images/surah-header.png">
+   
+    </div> 
+     <p> ${surahInfo.name}</p>
+    </div>`
     if (surahIndex !== 1) {
         quranContainer.innerHTML += `
-             <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div> 
+             <div class="bismillah" style="text-align:center">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div> 
             `;    
       }
     for (let i = 0; i < ayahs.length; i++) {
-      // console.log(ayahs[i]);
+      // //console.log(ayahs[i]);
       quranContainer.innerHTML+=
       `
             
-            <span data-num="${i}">${ayahs[i].arab}{${i+1}}</span>
+            <span data-num="${i}">${ayahs[i].arab}<b class="ayah-num">${i+1}</b></span>
            
         
       `
@@ -42,17 +55,17 @@ window.addEventListener("load",()=>{
     let ayahstext = document.querySelectorAll("#quran-container span")
     ayahstext.forEach((ayah,i)=>{
       ayah.onclick=function(){
-        console.log(i)
+        //console.log(i)
         playAyah(i)
       }
     })
     function playAyah(index){
      
        ayahindex=index;
-       console.log("aya"+ayahindex);
+       //console.log("aya"+ayahindex);
        if(ayahindex!=null){  
         let readerName =ayahs[ayahindex].audio[JSON.parse(localStorage.getItem("settings"))["reader"]];
-        console.log(readerName)
+        //console.log(readerName)
         quranPlayer.setAttribute("src",readerName)
         quranPlayer.play()
         ayahHieghLight(ayahindex);
@@ -66,9 +79,26 @@ window.addEventListener("load",()=>{
     }
     playAyah()
 
+    reader.oninput=function(){
+      //console.log(settings.reader)
+      settings.reader=reader.value;
+      //console.log(settings)
+
+      readerAr.forEach(r=>{
+        if(r.getAttribute("value") == settings.reader){
+          //console.log(r.innerHTML)
+          settings.readerAr=r.innerHTML;
+        }
+      })
+      localStorage.setItem("settings",JSON.stringify(settings));
+      // //console.log(JSON.parse(localStorage.getItem("settings")))
+      applySets();
+      playAyah(ayahindex)
+  }
+
     function incrementAyah(){
       quranPlayer.addEventListener("ended",()=>{
-        console.log("change")
+        //console.log("change")
         ayahindex++
         
         if(ayahindex <= ayahstext.length - 1){
@@ -89,7 +119,7 @@ window.addEventListener("load",()=>{
     }
     function audioPlayer(){
   
-      console.log(backBtn,playBtn,forwardBtn,quranPlayer)
+      //console.log(backBtn,playBtn,forwardBtn,quranPlayer)
      
       
       playBtn.onclick=function(){
@@ -129,15 +159,15 @@ window.addEventListener("load",()=>{
   
      isPlay==true; 
        changePlayIcon() ;
-      console.log("play")
-      console.log(isPlay)
+      //console.log("play")
+      //console.log(isPlay)
     }
     quranPlayer.onpause=function(){
      
      isPlay==false;
      changePlayIcon() ;
-      console.log("pause")
-      console.log(isPlay)
+      //console.log("pause")
+      //console.log(isPlay)
       
     }
 
@@ -151,7 +181,7 @@ window.addEventListener("load",()=>{
             ayahindex--;
           }
           
-          console.log(ayahindex)
+          //console.log(ayahindex)
           playAyah(ayahindex);
         }
         forwardBtn.onclick=function(){
@@ -161,7 +191,7 @@ window.addEventListener("load",()=>{
             ayahindex++;
           }
           
-          console.log(ayahindex)
+          //console.log(ayahindex)
           playAyah(ayahindex);
         }
      
@@ -177,7 +207,7 @@ window.addEventListener("load",()=>{
       gotoAyahBtn.onclick=function(){
         if(ayahNum.value != "" && ayahNum.value <= ayahs.length){
           window.scrollTo(0,ayahstext[ayahNum.value - 1].offsetTop - 300);
-          console.log(ayahstext[ayahNum.value - 1].offsetTop)
+          //console.log(ayahstext[ayahNum.value - 1].offsetTop)
           ayahindex=ayahNum.value - 1;
           playAyah(ayahindex)
         }
@@ -186,6 +216,7 @@ window.addEventListener("load",()=>{
     }
     goToAyah()
 
+    
   } //request listener
 
  
@@ -202,9 +233,9 @@ window.addEventListener("scroll",()=>{
   let quranPlayer = document.getElementById("quran-player");
 
   if(scrollY >= 300){
-    console.log(scrollY)
     quranPlayer.classList.add("quran-player-scrolled");
   }else{
     quranPlayer.classList.remove("quran-player-scrolled")
   }
 })
+

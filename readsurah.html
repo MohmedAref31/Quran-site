@@ -8,10 +8,12 @@
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
+    <!-- <link
       href="https://fonts.googleapis.com/css2?family=Amiri&display=swap"
       rel="stylesheet"
-    />
+    /> -->
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Changa:wght@400;600;700&display=swap" rel="stylesheet"> -->
+
     <link rel="stylesheet" href="css/surahread.css" />
   </head>
   <body lang="ar" dir="rtl">
@@ -25,6 +27,7 @@
         <div class="readers">
           <label for="select-reader">اختر القارئ</label>
           <select id="select-reader">
+            <option hidden>القارئ...</option>
             <option value="alafasy">مشارى راشد العفاسى</option>
             <option value="ahmedajamy">أحمد العجمى</option>
             <option value="husarymujawwad">الحصري</option>
@@ -85,7 +88,7 @@
         <div class="audio">
           <audio src="" id="quran-audio" controls></audio>
         </div>
-        <!-- <div id="show-reader-name" style="font-size:1.5rem">محمد صديق المنشاوى</div> -->
+        <div id="show-reader-name" style="font-size:1.5rem">محمد صديق المنشاوى</div>
 
         <div class="audio-controls">
           <div class="forward" id="forward-btn">

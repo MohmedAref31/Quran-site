@@ -4,6 +4,7 @@ let quranPlayer = document.getElementById("quran-audio")
 let backBtn = document.getElementById("back-btn")
 let playBtn = document.getElementById("play-pause-btn")
 let forwardBtn = document.getElementById("forward-btn")
+let listenBtn;
 let surahnum=0;
 let isPlay=false;
 let isAutoPlayNext=false;
@@ -40,93 +41,213 @@ function getData() {
         readBtn.forEach((l,i)=>{
             l.onclick=function(){
                 localStorage.setItem("surahReadLink",i)
+                let surahInfo = {
+                    name:surahs[i].asma.ar.long
+                }
+                localStorage.setItem("surahInfo",JSON.stringify(surahInfo));
             }
         })
      }
     readLink()
-    console.log(surahs)
+    
+     listenBtn = document.querySelectorAll(".listen-surah");
+     function listenSurah(){
+        let surahsAudioData=this.responseText;
 
-function listenSurah(){
-    let listenBtn = document.querySelectorAll(".listen-surah");
-    // console.log(listenBtn)
-    listenBtn.forEach((s,i)=>{
-        s.onclick=function(){
-            surahnum=i;
-          surah(surahnum);
-          
-          isPlay=true;
-          console.log(isPlay)
-        }
-        })
-
-        function surah(index){
-            console.log(index)
-            function getAudio(){
-            let surahsAudio = JSON.parse(this.responseText)
-            let surahsName=Object.keys(surahsAudio);
-            let sa=surahsAudio[surahsName[index]]["source"]
-            // console.log(surahsAudio)
-            // console.log(surahsAudio[surahsName[113]]["source"])
-            quranPlayer.setAttribute("src",sa)
-            quranPlayer.play()
-            playBtn.innerHTML=` <ion-icon name="pause-circle-outline"></ion-icon>`
-
+        let surahsAudio=JSON.parse(surahsAudioData)["reciters"];
+        let readersContainer = document.querySelector("#select-home-reader ul")
+        let readerName=document.getElementById("reader-name-holder");
+        let  homeReader;
+        //     "server":"https://server6.mp3quran.net/akdr/",
+        //     "name":"محمد صديق المنشاوي"
+        // };
+    
+        if(localStorage.homeReaderL != null){
+             homeReader=JSON.parse(localStorage.getItem("homeReaderL"));
+            readerName.textContent=" القارئ "  + homeReader.name;
             
+            }else{
+              homeReader={
+                "server":"https://server6.mp3quran.net/akdr/",
+                "name":"محمد صديق المنشاوي"
+            }
+            readerName.textContent=" القارئ "  + homeReader.name;
         }
-          const surahAudioRequest = new XMLHttpRequest();
-          surahAudioRequest.addEventListener("load", getAudio);
-          surahAudioRequest.open("GET", "Quran-Api-main/surahs-afasy.json");
-          surahAudioRequest.send();
-        }
-
-        function togglePlay(){
-            playBtn.onclick=function(){
-                if(isPlay){
-                    quranPlayer.pause();
-                    isPlay=false;
-                    this.innerHTML=` <ion-icon name="play-circle-outline"></ion-icon>`
-                    
-                }else{
-                    quranPlayer.play();
-                    isPlay=true;
-                    this.innerHTML=` <ion-icon name="pause-circle-outline"></ion-icon>`
-
-                }
-            }
-        }togglePlay()
-
-        function nextAndBack(){
-            backBtn.onclick=function(){
-                if(surahnum == 0){
-                    surahnum=0;
-                    surah(surahnum);
-                    isPlay=true;
-                    togglePlay()
-                }else{
-                    surahnum--;
-                    surah(surahnum);
-                }
-            }
-            forwardBtn.onclick=function(){
-                if(surahnum == 113){
-                    surahnum=0;
-                    surah(surahnum);
-                }else{
-                    surahnum++;
-                    surah(surahnum);
-                    isPlay=true;
-                    togglePlay()
-                }
-            }
-        }nextAndBack()
         
-        function autoPlayNext(){
+       
+             
+             
+    
+             surahsAudio.forEach(s=>{
+                s.moshaf.forEach(r=>{
+                readersContainer.innerHTML+=` <li value="${r.server}" data-name="${s.name}" > ${s.name} (${r.name})</li>`
+    
+                })
+             })
+             let readers= document.querySelectorAll("#select-home-reader ul li")
+             readers.forEach(r=>{
+                r.onclick=function(){
+                    console.log(homeReader)
+                    homeReader["server"]=r.getAttribute("value");
+                    homeReader.name=r.getAttribute("data-name")
+                    readerName.textContent=" القارئ "  +homeReader.name;
+                    localStorage.setItem("homeReaderL",JSON.stringify(homeReader));
+                }
+             })
+             
+             function searchForReader(){
+                let search=document.getElementById("reader-search")
+                search.onkeyup=function(){
+                    console.log("emmm")
+                    if(search.value == ''){
+                         readers.forEach(e=>{
+    
+                        e.style.display="block"
+                    })
+                    }
+                   
+                }
+                search.oninput=function(){
+                    
+                    let searchVal=search.value.replace(/\s+/g, '');
+                    let ismatch=false;
+                    console.log(searchVal.split(''))
+                    console.log(searchVal)
+                    console.log(searchVal.length)
+                    readers.forEach(e=>{
+                        let readerNameSearch=e.getAttribute("data-name").replace(/\s+/g, '');
+                        
+                        if(searchVal.length <= readerNameSearch.length && searchVal.length > 0){
+                            for(let i = 0 ; i < searchVal.length ; i++){
+                               if( searchVal.split('')[i] == readerNameSearch.split('')[i]){
+                                ismatch=true
+                            }else{
+                                ismatch=false;
+                                break;
+                                // console.log(searchVal.split('')[i] , readerNameSearch.split('')[i] , ismatch)
+                                
+                            }
+                               
+                            }
+                        }else{
+                            for(let i = 0 ; i < readerNameSearch.length ; i++){
+                                if( searchVal.split('')[i] == readerNameSearch.split('')[i]){
+                                    ismatch=true
+                                }else{
+                                    ismatch=false;
+                                    break;
+                                    // console.log(searchVal.split('')[i] , readerNameSearch.split('')[i] , ismatch)
+                                    
+                                }
+                                   
+                                }
+                            }
+                      
+                        
+                        if(searchVal.length == 0){
+                            ismatch=false;
+                        }
+                        console.log(ismatch)
+                       if(ismatch == true){
+                            console.log(e)
+                            e.style.display="block"
+                       }else{
+                        e.style.display="none"
+                       }
+                    })
+               
+            }
+         
+             }searchForReader()
+             
+        
+        // console.log(listenBtn)
+        listenBtn.forEach((s,i)=>{
+            s.onclick=function(){
+                console.log("done")
+                surahnum=i;
+              surah(surahnum);
+              
+              isPlay=true;
+              console.log(isPlay)
+            }
+            })
+    
+            function surah(index){
+                console.log(index)
+                index++;
+                if(index<10){
+                    index=`00${index}`;
+                }else if(index<100){
+                    index=`0${index}`;
+    
+                }else{
+                    index=index;
+                }
+                
+                let sa=`${homeReader["server"]}${index}.mp3`
+                console.log(sa)
+                quranPlayer.setAttribute("src",sa)
+                quranPlayer.play()
+                playBtn.innerHTML=` <ion-icon name="pause-circle-outline"></ion-icon>`
+    
+         
+            }
+    
+            function togglePlay(){
+                playBtn.onclick=function(){
+                    if(isPlay){
+                        quranPlayer.pause();
+                        isPlay=false;
+                        this.innerHTML=` <ion-icon name="play-circle-outline"></ion-icon>`
+                        
+                    }else{
+                        quranPlayer.play();
+                        isPlay=true;
+                        this.innerHTML=` <ion-icon name="pause-circle-outline"></ion-icon>`
+    
+                    }
+                }
+            }togglePlay()
+    
+            function nextAndBack(){
+                backBtn.onclick=function(){
+                    if(surahnum == 0){
+                        surahnum=0;
+                        surah(surahnum);
+                        isPlay=true;
+                        togglePlay()
+                    }else{
+                        surahnum--;
+                        surah(surahnum);
+                    }
+                }
+                forwardBtn.onclick=function(){
+                    if(surahnum == 113){
+                        surahnum=0;
+                        surah(surahnum);
+                    }else{
+                        surahnum++;
+                        surah(surahnum);
+                        isPlay=true;
+                        togglePlay()
+                    }
+                }
+            }nextAndBack()
+            
+            function autoPlayNext(){
+                
+            }
+        }  
+    
+    
+        const surahsAudio = new XMLHttpRequest();
+        surahsAudio.addEventListener("load", listenSurah);
+        surahsAudio.open("GET", "Quran-Api-main/readers.json");
+        surahsAudio.send();
+    
 
-        }
-    }  listenSurah()
-
-
-
+    
     
   }//get data
   
@@ -135,6 +256,16 @@ function listenSurah(){
   req.open("GET", "https://quran-endpoint.vercel.app/quran");
   req.send();
   
+
+
+
+ 
+
+
+
+
+
+
 
 
 
@@ -149,7 +280,7 @@ function listenSurah(){
     let quranPlayer = document.getElementById("quran-player");
   
     if(scrollY >= 300){
-      console.log(scrollY)
+    //   console.log(scrollY)
       quranPlayer.classList.add("quran-player-scrolled");
     }else{
       quranPlayer.classList.remove("quran-player-scrolled")

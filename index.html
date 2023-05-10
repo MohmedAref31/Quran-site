@@ -22,17 +22,20 @@
                 <ion-icon name="settings-outline"></ion-icon>
             </div>
             <div class="readers">
-                <label for="select-reader">اختر القارئ</label>
-                <select id="select-reader">
-                    <option value="alafasy" >مشارى راشد العفاسى</option>
-                    <option value="ahmedajamy" >أحمد العجمى</option>
-                    <option value="husarymujawwad" >الحصري</option>
-                    <option value="minshawi" >محمد صديق المنشاوى</option>
-                    <option value="muhammadayyoub" >محمد ايوب</option>
-                    <option value="muhammadjibreel" >محمد جبريل</option>
-                </select>
+                <p >اختر القارئ</label>
+                <div id="select-home-reader">
+                    <div class="search" ><input type="search"  id="reader-search" placeholder="ابحث عن قارئ"></div>
+                    <ul>
+                        <!-- <li>مشاري راشد</li>
+                        <li>مشاري راشد</li>
+                        <li>مشاري راشد</li>
+                        <li>مشاري راشد</li>
+                        <li>مشاري راشد</li> -->
+                    </ul>
+                    
+                    </div>
             </div>
-            <p>لون الخلفية</p>
+            <!-- <p>لون الخلفية</p>
             <div class="colors">
                 <div class="black" style="background-color: black;" value="black" data-color="white"></div>
                 <div class="white" style="background-color: white;" value="white" data-color="black"></div>
@@ -44,12 +47,12 @@
 
                 <div class="font-num" id="font-size-num">1</div>
                 <div class="decrease" id="decrease-size">-</div>
-            </div>
+            </div> -->
         </div>
 
    <div class="header">
     <h1 class="main-title">الآن هُوَ وَقْتُ الْقُرْءَانِ</h1>
-    <div class="dark-switch"><span>🌙</span></div>
+    <!-- <div class="dark-switch"><span>🌙</span></div> -->
    </div>
 
    <div class="main">
@@ -58,6 +61,7 @@
         <div class="audio" >
             <audio src="" id="quran-audio" controls></audio>
         </div>
+        <p id="reader-name-holder"></p>
         <div class="controls-container">
         <div class="audio-controls">
             <div class="forward" id="forward-btn"><ion-icon  name="play-back-circle-outline"></ion-icon></div>

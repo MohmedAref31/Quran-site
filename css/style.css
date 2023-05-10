@@ -1,10 +1,17 @@
 :root {
   font-size: 16px;
-  --m-color: #012b2a;
-  --s-color: #027774;
-  --l-color: #d5e1ef;
+  /* --m-color: #012b2a;
+  --s-color: #027774; */
+  --s-color: #8b4c16;
+  --m-color: #e0d2bc;
+  --l-color: #f6f1e4;
   --d-color: #262f38;
 }
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@400;600;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+
 @media (max-width: 560px) {
   :root {
     font-size: 12px;
@@ -17,13 +24,16 @@
 }
 body {
   font-family: "Changa", Amiri, sans-serif;
-  background: linear-gradient(to bottom, var(--m-color) 50%, var(--s-color))
-    no-repeat;
-  background-size: cover;
+  background-color: var(--l-color);
+  background: url(../images/white-bg.jpg);
+  background-size: contain;
   min-height: 100vh;
 }
+ul{
+  list-style: none;
+}
 ::selection {
-  background-color: #02777384;
+  background-color: #784a22c0;
 }
 .quran-player {
   background-color: var(--s-color);
@@ -125,8 +135,7 @@ body {
 }
 
 .settings {
-  background-color: #dddddd;
-  border-radius: 5px;
+  background-color: var(--l-color);
   position: relative;
   position: fixed;
   z-index: 99999;
@@ -134,12 +143,10 @@ body {
   left: 0;
   top: 20%;
   text-align: center;
-  color: var(--m-color);
+  color: var(--s-color);
   padding: 1rem;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  -o-border-radius: 5px;
+  border: 1px solid var(--s-color);
+  border-radius: 5px;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -147,6 +154,10 @@ body {
   -o-transition: all 0.5s;
   font-size: 1.5rem;
   font-family: "Changa", Amiri, sans-serif !important;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
 }
 
 .settings select {
@@ -161,19 +172,22 @@ body {
   border: 1px solid #fff;
   outline: none;
   font-size: inherit;
+  
 }
 
 .settings .toggle-close {
   width: 30px;
   height: 30px;
   margin-right: calc(-1rem - 30px);
-  background-color: #ddddddd8;
+  background-color: var(--l-color);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  color: var(--s-color);
+  border: 1px solid var(--s-color);
 }
 
 .settings-closed {
@@ -193,12 +207,12 @@ body {
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
-  border: 2px solid var(--m-color);
+  border: 2px solid var(--s-color);
   position: relative;
 }
 
 .settings .colors div:hover {
-  border-color: var(--s-color);
+  border-color: var(--m-color);
 }
 
 .font-size {
@@ -210,7 +224,7 @@ body {
 .font-size .increase,
 .font-size .decrease,
 .font-size .font-num {
-  border: 2px solid var(--m-color);
+  border: 2px solid var(--s-color);
   min-width: 40px;
   height: 40px;
   display: flex;
@@ -228,7 +242,7 @@ body {
 .font-size .increase:hover,
 .font-size .decrease:hover {
   background-color: var(--m-color);
-  color: var(--l-color);
+  color: var(--s-color);
 }
 
 .goto-ayah {
@@ -254,10 +268,10 @@ body {
   flex-basis: 60%;
 }
 .goto-ayah input::placeholder {
-  color: #ddddddc6;
+  color: var(--l-color);
 }
 .goto-ayah input:out-of-range {
-  background-color: rgb(245, 83, 83);
+  background-color: rgb(181, 51, 25);
 }
 .goto-ayah button {
   border-top-left-radius: 20px;
@@ -266,7 +280,8 @@ body {
   justify-content: center;
   align-items: center;
   background-color: var(--m-color);
-  color: var(--l-color);
+  color: var(--s-color);
+  border: 1px solid var(--s-color);
 }
 .goto-ayah button:active {
   background-color: var(--d-color);
