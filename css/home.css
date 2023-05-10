@@ -25,11 +25,11 @@
 
 @media(max-width:767px){
     .header{
-        padding-bottom: 6rem;
+        padding-bottom: 7rem;
     }
-    /* .header .main-title{
+    .header .main-title{
         font-size: 2rem;
-    } */
+    }
 
 }
 

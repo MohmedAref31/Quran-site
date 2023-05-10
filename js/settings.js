@@ -7,7 +7,7 @@ let fontIncrease=document.getElementById("increase-size")
 let fontDecrease=document.getElementById("decrease-size")
 let quranContainerN=document.getElementById("quran-container");
 let showReaderName= document.getElementById("show-reader-name");
-let settings={};
+let settings;
 
 console.log(localStorage.settings)
 
@@ -19,17 +19,18 @@ settingsFram.onblur=function(){
 }
 
 
-if(localStorage.settings!=null){
-settings=JSON.parse(localStorage.getItem("settings"));
+if(localStorage.settings != null){
+settings=JSON.parse(localStorage.settings);
 
 }else{
      settings = {
     reader:"alafasy",
     readerAr:"مشاري راشد العفاسى",
-    quranBackground:"#fff",
+    quranBackground:"#000",
     fontSize:1.5,
     fontColor:"white",
 }
+localStorage.setItem("settings", JSON.stringify(settings))
 }
 
 
