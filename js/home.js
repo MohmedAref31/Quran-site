@@ -167,9 +167,12 @@ function getData() {
                 console.log("done")
                 surahnum=i;
               surah(surahnum);
-              
+              playBtn.classList.add("audio-loader")
               isPlay=true;
               console.log(isPlay)
+              quranPlayer.oncanplay=function(){
+                playBtn.classList.remove("audio-loader")
+              }
             }
             })
     

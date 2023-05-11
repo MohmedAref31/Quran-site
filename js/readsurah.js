@@ -71,6 +71,11 @@ window.addEventListener("load",()=>{
         ayahHieghLight(ayahindex);
        isPlay=true;
        changePlayIcon()
+       playBtn.classList.add("audio-loader")
+       quranPlayer.oncanplay=function(){
+        playBtn.classList.remove("audio-loader")
+      }
+       
 } 
     
       

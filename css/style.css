@@ -92,6 +92,47 @@ ul{
   color: var(--l-color);
 }
 
+#play-pause-btn.audio-loader{
+  position: relative;
+}
+#play-pause-btn.audio-loader::before{
+  content: '';
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: -5px;
+  left: -5px;
+  background-color: var(--s-color);
+  border: 3px solid ;
+  border-color: var(--l-color) var(--s-color) var(--s-color) var(--l-color);
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+
+  animation: spin 1s infinite;
+  z-index: 9;
+  -webkit-animation: spin 1s infinite;
+}
+
+@keyframes spin{
+  from{
+    transform: translate(-50%,-50%) rotate(0) ;
+    -webkit-transform: translate(-50%,-50%) rotate(0) ;
+    -moz-transform: translate(-50%,-50%) rotate(0) ;
+    -ms-transform: translate(-50%,-50%) rotate(0) ;
+    -o-transform: translate(-50%,-50%) rotate(0) ;
+}
+  to{
+    transform: translate(-50%,-50%) rotate(360deg) ;
+    -webkit-transform: translate(-50%,-50%) rotate(360deg) ;
+    -moz-transform: translate(-50%,-50%) rotate(360deg) ;
+    -ms-transform: translate(-50%,-50%) rotate(360deg) ;
+    -o-transform: translate(-50%,-50%) rotate(360deg) ;
+}
+}
+
 .loader {
   position: absolute;
   width: 100%;
