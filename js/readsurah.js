@@ -1,6 +1,5 @@
 
-
-
+let loader = document.getElementById("loader");
 let surahIndex = +localStorage.getItem("surahReadLink") + 1;
 let surahInfo=JSON.parse(localStorage.getItem("surahInfo"));
 let quranPlayer=document.getElementById("quran-audio");
@@ -17,15 +16,9 @@ let quranContainer = document.getElementById("quran-container");
 if (surahIndex != null) {
   function reqListener() {
       
-window.addEventListener("load",()=>{
-  let loader = document.getElementById("loader");
+    loader.style.display="none"
 
-  // loader.style.display="none"
-})
-
-  quranPlayer.onload=function(){
-    console.log("loaded")
-  }
+  
 
     let ayahs = JSON.parse(req.responseText);
     //console.log(ayahs);

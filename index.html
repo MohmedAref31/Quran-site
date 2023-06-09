@@ -51,28 +51,75 @@
         </div>
 
    <div class="header">
+
+    <div class="calender">
+        <div class="time" id="time-container">
+            الساعة
+        </div>
+        
+        <div class="pr-times">
+            <ul id="times">
+                <li>
+                    <p class="pr-name">الفجر</p>
+                    <p class="pr-time" id="Fajr">-:-</p>
+                    <p class="pr-remaining">-:-</p>
+                </li>
+                <li>
+                    <p class="pr-name">الشروق</p>
+                    <p class="pr-time" id="Sunrise">-:-</p>
+                    <p class="pr-remaining">-:-</p>
+
+                </li>
+                <li>
+                    <p class="pr-name" >الظهر</p>
+                    <p class="pr-time" id="Dhuhr">-:-</p>
+                    <p class="pr-remaining">-:-</p>
+                </li>
+                <li>
+                    <p class="pr-name">العصر</p>
+                    <p class="pr-time" id="Asr">-:-</p>
+                    <p class="pr-remaining">-:-</p>
+                </li>
+                <li>
+                    <p class="pr-name">المغرب</p>
+                    <p class="pr-time" id="Maghrib">-:-</p>
+                    <p class="pr-remaining">-:-</p>
+                </li>
+                <li>
+                    <p class="pr-name">العشاء</p>
+                    <p class="pr-time" id="Isha">-:-</p>
+                    <p class="pr-remaining">-:-</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
     <h1 class="main-title">الآن هُوَ وَقْتُ الْقُرْءَانِ</h1>
+    
     <!-- <div class="dark-switch"><span>🌙</span></div> -->
    </div>
 
    <div class="main">
     <div class="main-container">
-    <div class="quran-player" id="quran-player">
+    <div class="quran-player quran-player-scrolled" id="quran-player">
         <div class="audio" >
             <audio src="" id="quran-audio" controls></audio>
         </div>
         <p id="reader-name-holder"></p>
         <div class="controls-container">
         <div class="audio-controls">
+            <div class="random" id="random-btn"><ion-icon name="shuffle-outline"></ion-icon></div>
             <div class="forward" id="forward-btn"><ion-icon  name="play-back-circle-outline"></ion-icon></div>
             <div  class="play-pause paused " id="play-pause-btn"><ion-icon name="play-circle-outline"></ion-icon></div>
             <div class="back" id="back-btn"><ion-icon name="play-forward-circle-outline"></ion-icon></div>
+            <div class="play-next" id="play-next-btn"><ion-icon name="repeat-outline"></ion-icon></div>
         </div>
         <!-- <div class="autoplay" id="autoPlay"><ion-icon name="return-down-forward-outline"></ion-icon></div> -->
     </div>
     </div>
 
      <div class="surahs" id="surahs">
+        <!-- <div class="loader" id="loader"><div class="loader-spin"></div></div> -->
       <!--  
         <div class="surah">
             <div class="surah-header">
@@ -104,6 +151,8 @@
 <script src="js/darkmode.js"></script>
 <script src="js/home.js"></script>
 <script src="js/settings.js"></script>
+<script src="js/time.js"></script>
+<script src="js/azan.js"></script>
 
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

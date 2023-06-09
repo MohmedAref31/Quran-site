@@ -4,12 +4,17 @@ let quranPlayer = document.getElementById("quran-audio")
 let backBtn = document.getElementById("back-btn")
 let playBtn = document.getElementById("play-pause-btn")
 let forwardBtn = document.getElementById("forward-btn")
+let playNextBtn =document.getElementById("play-next-btn");
+let randomBtn = document.getElementById("random-btn");
 let listenBtn;
 let surahnum=0;
 let isPlay=false;
 let isAutoPlayNext=false;
+let playNextOn = false;
 console.log(surahsHolder)
 function getData() {
+    loader.style.display="none";
+
     surahs=JSON.parse(this.responseText).data;
     surahs.forEach(s => {
         // console.log(s.asma.ar.long)
@@ -167,7 +172,7 @@ function getData() {
                 console.log("done")
                 surahnum=i;
               surah(surahnum);
-              playBtn.classList.add("audio-loader")
+              loader()
               isPlay=true;
               console.log(isPlay)
               quranPlayer.oncanplay=function(){
@@ -175,7 +180,12 @@ function getData() {
               }
             }
             })
-    
+            function loader(){
+                playBtn.classList.add("audio-loader")
+                quranPlayer.oncanplay=function(){
+                    playBtn.classList.remove("audio-loader")
+                  }
+            }
             function surah(index){
                 console.log(index)
                 index++;
@@ -215,6 +225,7 @@ function getData() {
     
             function nextAndBack(){
                 backBtn.onclick=function(){
+                    loader()
                     if(surahnum == 0){
                         surahnum=0;
                         surah(surahnum);
@@ -226,6 +237,24 @@ function getData() {
                     }
                 }
                 forwardBtn.onclick=function(){
+                    loader()
+                   playNext()
+                }
+
+                playNextBtn.onclick=()=>{
+                    
+                    playNextOn = !playNextOn;
+                    playNextBtn.classList.toggle("play-next-active")
+                    console.log(playNextOn)
+                }
+                quranPlayer.onended = function(){
+                    if(playNextOn){
+                        loader();
+                        playNext();
+                    }
+                        
+                }
+                function playNext(){
                     if(surahnum == 113){
                         surahnum=0;
                         surah(surahnum);
@@ -236,11 +265,18 @@ function getData() {
                         togglePlay()
                     }
                 }
+
+                randomBtn.onclick = ()=>{
+                    let random = (Math.random()*113).toFixed(0);
+                    surahnum = random;
+                    surah(surahnum);
+                    isPlay=true;
+                    togglePlay()
+                    loader
+                }
             }nextAndBack()
             
-            function autoPlayNext(){
-                
-            }
+          
         }  
     
     
@@ -273,11 +309,11 @@ function getData() {
 
 
 
-  window.addEventListener("load",()=>{
-    let loader = document.getElementById("loader");
+//   window.addEventListener("load",()=>{
+//     let loader = document.getElementById("loader");
   
-    loader.style.display="none"
-  })
+//     loader.style.display="none"
+//   })
 
   window.addEventListener("scroll",()=>{
     let quranPlayer = document.getElementById("quran-player");

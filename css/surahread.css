@@ -34,6 +34,7 @@ body{
     -o-border-radius: 5px;
     text-align: justify;
     border: 2px solid var(--s-color);
+    position: relative;
 }
 .quran-container span{
     padding: 10px 0;
