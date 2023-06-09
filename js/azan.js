@@ -81,7 +81,7 @@ function findCity  (){
 
             const getAzanTimes= new XMLHttpRequest();
             getAzanTimes.addEventListener("load", getAzanData);
-            getAzanTimes.open("GET",`http://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=8`);
+            getAzanTimes.open("GET",`https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=8`);
             getAzanTimes.send();
         }
         const getCity = new XMLHttpRequest();
