@@ -27,6 +27,7 @@ body {
   background-color: var(--l-color);
   background: url(../images/white-bg.jpg);
   background-size: contain;
+  background-attachment:fixed;
   min-height: 100vh;
 }
 ul{
